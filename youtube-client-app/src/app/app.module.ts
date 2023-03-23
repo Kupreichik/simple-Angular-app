@@ -8,6 +8,9 @@ import { SearchFormComponent } from './components/header/search-form/search-form
 import { SortFormComponent } from './components/header/sort-form/sort-form.component';
 import { SearchResultsComponent } from './components/search/search-results/search-results.component';
 import { SearchItemComponent } from './components/search/search-item/search-item.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { SearchItemComponent } from './components/search/search-item/search-item
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatButtonModule,
+    MatIconModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

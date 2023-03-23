@@ -1,0 +1,62 @@
+header {
+  width: 100%;
+  height: 80px;
+  background: #E5E5E5;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .header-wrapper {
+    margin-left: 15%;
+  }
+
+  button {
+    background: #2F80ED;
+    color:white;
+  }
+  
+  .play-btn {
+    min-width: 50px;
+    padding: 0;
+    border-radius: 24%;
+  }
+
+  .play-icon {
+    font-size: 30px;
+    width: 100%;
+    height: 100%;
+    margin-right: 0;
+    margin-left: 2px;
+    margin-top: 4px;
+  }
+
+  .login-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .user-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    background: #2F80ED;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user-icon-round {
+    background: #ffff;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .person-icon {
+    color: #2F80ED;
+    margin-left: -3px;
+    margin-top: -1px;
+  }
+}

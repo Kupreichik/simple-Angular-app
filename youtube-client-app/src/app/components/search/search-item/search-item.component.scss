@@ -1,0 +1,64 @@
+.search-item {
+  position: relative;
+  overflow: hidden;
+  background: #E5E5E5;
+  width: 263px;
+  height: 327px;
+  border-radius: 5px;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+  box-sizing: border-box;
+  padding: 0 20px;
+  text-align: center;
+
+  .video-preview {
+    width: 223px;
+    height: 123px;
+    margin: 20px 0 10px;
+    background: rgb(52, 75, 71);
+  }
+
+  .video-preview-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .more-btn {
+    background: #2F80ED;
+    width: 120px;
+    height: 32px;
+    border-radius: 5px;
+    position: absolute;
+    color: white;
+    bottom: 15px;
+    left:70px;
+    font-size: 12px;
+  }
+
+  h2 {
+    font-size: 20px;
+    text-align: right;
+    margin: 0;
+    margin-top: 8px;
+    color: #4F4F4F;
+    max-height: 90px;
+  }
+
+  .status-card{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+
+  .video-data {
+    display: flex;
+    font-size: 10px;
+    justify-content: space-around;
+    margin: 21px 0;
+  }
+}

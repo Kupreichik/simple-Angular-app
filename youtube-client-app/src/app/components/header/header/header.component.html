@@ -4,6 +4,9 @@
       <mat-icon class="play-icon">play_arrow</mat-icon>
     </button>
     <app-search-form></app-search-form>
+    <button class="settings-btn" mat-raised-button (click)="sortingVisibleToggle()">
+      <mat-icon class="settings-icon">tune</mat-icon>
+    </button>
   </div>
 
   <div class="login-info">
@@ -15,3 +18,4 @@
     </div>
   </div>
 </header>
+<app-sort-form *ngIf="sortingVisible"></app-sort-form>

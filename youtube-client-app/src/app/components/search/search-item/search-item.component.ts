@@ -10,8 +10,10 @@ import { data } from '../../../constants/response.constant';
 export class SearchItemComponent implements OnInit {
   @Input() itemData: SearchItem = data.items[0];
   previewSrc!: string;
+  fullTitle!: string;
 
   ngOnInit(): void {
     this.previewSrc = this.itemData.snippet.thumbnails.medium.url;
+    this.fullTitle = this.itemData.snippet.title;
   }
 }

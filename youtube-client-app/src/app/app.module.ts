@@ -11,6 +11,7 @@ import { SearchItemComponent } from './components/search/search-item/search-item
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ShortenTitlePipe } from './pipes/shorten-title.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
     SearchFormComponent,
     SortFormComponent,
     SearchResultsComponent,
-    SearchItemComponent
+    SearchItemComponent,
+    ShortenTitlePipe
   ],
   imports: [
     BrowserModule,

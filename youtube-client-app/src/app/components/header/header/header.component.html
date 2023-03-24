@@ -3,7 +3,7 @@
     <button class="play-btn" mat-raised-button>
       <mat-icon class="play-icon">play_arrow</mat-icon>
     </button>
-    <app-search-form></app-search-form>
+    <app-search-form (submitSearch)="submitSearchingText($event)"></app-search-form>
     <button class="settings-btn" mat-raised-button (click)="sortingVisibleToggle()">
       <mat-icon class="settings-icon">tune</mat-icon>
     </button>

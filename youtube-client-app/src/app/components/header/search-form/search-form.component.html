@@ -1,2 +1,4 @@
-  <input class="search-input" type="search" placeholder="What are you want to find out?">
-  <button class="search-button" type="submit" mat-raised-button>search</button>
+<form (submit)="submitSearchingText()">
+  <input [(ngModel)]="searchingText" name="searchingText" class="search-input" type="search" placeholder="What are you want to find out?">
+  <button class="search-button" type="submit"  mat-raised-button>search</button>
+</form>

@@ -4,7 +4,7 @@
   </div>
 
   <div class="video-data">
-    <mat-icon class="icon">visibility</mat-icon><span>{{itemData.statistics.viewCount}}</span>
+    <mat-icon class="icon">visibility</mat-icon><span>{{ itemData.statistics.viewCount }}</span>
     <mat-icon class="icon">favorite</mat-icon><span>{{itemData.statistics.likeCount}}</span>
     <mat-icon class="icon">heart_broken</mat-icon><span>{{itemData.statistics.dislikeCount}}</span>
     <mat-icon class="icon">forum</mat-icon><span>{{itemData.statistics.commentCount}}</span>
@@ -14,5 +14,5 @@
   <h2 [title]="fullTitle">{{ itemData.snippet.title | shortenTitle }}</h2>
 
   <button mat-button class="more-btn">More...</button>
-  <div class="status-card"></div>
+  <div class="date-status" [appPublicationDateColor]="publishedDate"></div>
 </div>

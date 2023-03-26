@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ShortenTitlePipe } from './pipes/shorten-title.pipe';
 import { FormsModule } from '@angular/forms';
+import { PublicationDateColorDirective } from './directives/publication-date-color.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     SortFormComponent,
     SearchResultsComponent,
     SearchItemComponent,
-    ShortenTitlePipe
+    ShortenTitlePipe,
+    PublicationDateColorDirective
   ],
   imports: [
     BrowserModule,

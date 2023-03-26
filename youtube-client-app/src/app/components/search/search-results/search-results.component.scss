@@ -1,6 +1,7 @@
 main {
   display: flex;
-  width: 1140px;
+  max-width: 1140px;
+  justify-content: center;
   margin: 0 auto;
   row-gap: 29px;
   column-gap: 29px;

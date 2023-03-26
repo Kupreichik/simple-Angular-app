@@ -1,7 +1,7 @@
 <div class="sort-bar">
   <span class="sort-title">Sorting by:</span>
-  <button class="sort-item" id="date-sort-btn">date</button>
-  <button class="sort-item" id="views-sort-btn">count of views</button>
-  <button class="sort-item">by word or sentance</button>
-  <input class="search-field" type="search">
+  <button (click)="setSortingField('date')" class="sort-item click-item">date</button>
+  <button (click)="setSortingField('views')" class="sort-item click-item">count of views</button>
+  <button class="sort-item">by word or sentence</button>
+  <input class="search-field" type="search" [(ngModel)]="sortingText" (input)="submitSortingText()">
 </div>

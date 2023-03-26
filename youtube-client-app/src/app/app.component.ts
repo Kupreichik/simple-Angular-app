@@ -8,8 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent {
   title = 'youtube-client-app';
   searching = '';
+  sortField = '';
+  isDesc = false;
+  sortText = '';
 
   submitSearchingText(searchingText: string): void {
     this.searching = searchingText;
+  }
+
+  setSortingField(field: string) {
+    this.sortField = field;
+  }
+
+  setSortingIsDesc(isDesc: boolean) {
+    this.isDesc = isDesc;
+  }
+
+  setSortingText(text: string) {
+    this.sortText = text;
   }
 }

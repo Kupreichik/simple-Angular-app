@@ -14,6 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ShortenTitlePipe } from './pipes/shorten-title.pipe';
 import { FormsModule } from '@angular/forms';
 import { PublicationDateColorDirective } from './directives/publication-date-color.directive';
+import { SortItemsPipe } from './pipes/sort-items.pipe';
+import { SortByTextPipe } from './pipes/sort-by-text.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { PublicationDateColorDirective } from './directives/publication-date-col
     SearchResultsComponent,
     SearchItemComponent,
     ShortenTitlePipe,
-    PublicationDateColorDirective
+    PublicationDateColorDirective,
+    SortItemsPipe,
+    SortByTextPipe
   ],
   imports: [
     BrowserModule,

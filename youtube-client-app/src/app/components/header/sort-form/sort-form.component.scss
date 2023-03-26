@@ -13,9 +13,14 @@
   }
 
   .sort-item {
+
     text-decoration: underline;
     color: #2F80ED;
     font-size: 12px;
+  }
+
+  .click-item {
+    cursor: pointer;
   }
 
   input {

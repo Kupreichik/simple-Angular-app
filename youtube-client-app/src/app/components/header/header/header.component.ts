@@ -8,6 +8,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
   sortingVisible = false;
   @Output() submitSearch = new EventEmitter<string>();
+  @Output() setSorting = new EventEmitter<string>();
+  @Output() setSortIsDesc = new EventEmitter<boolean>();
+  @Output() setSortText = new EventEmitter<string>();
   searchingText = '';
 
   sortingVisibleToggle() {
@@ -19,4 +22,16 @@ export class HeaderComponent {
     this.submitSearch.emit(this.searchingText);
     this.searchingText = '';
   }
+
+  setSortingField(field: string) {
+    this.setSorting.emit(field);
+  }
+
+  setSortingIsDesc(isDesc: boolean) {
+    this.setSortIsDesc.emit(isDesc);
+  }
+
+  setSortingText(text: string) {
+    this.setSortText.emit(text);
+  };
 }

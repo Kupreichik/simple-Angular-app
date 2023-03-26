@@ -18,4 +18,8 @@
     </div>
   </div>
 </header>
-<app-sort-form *ngIf="sortingVisible"></app-sort-form>
+<app-sort-form *ngIf="sortingVisible"
+  (setSorting)="setSortingField($event)"
+  (setSortIsDesc)="setSortingIsDesc($event)"
+  (setSortingText)="setSortingText($event)"
+  ></app-sort-form>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { SortingOptions } from 'src/app/models/sorting-options.model';
 
 @Component({
   selector: 'app-header',
@@ -8,30 +9,23 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
   sortingVisible = false;
   @Output() submitSearch = new EventEmitter<string>();
-  @Output() setSorting = new EventEmitter<string>();
-  @Output() setSortIsDesc = new EventEmitter<boolean>();
+  @Output() setSortingOptions = new EventEmitter<SortingOptions>();
   @Output() setSortText = new EventEmitter<string>();
-  searchingText = '';
 
-  sortingVisibleToggle() {
+
+  toggleSortingVisible() {
     this.sortingVisible = !this.sortingVisible;
   }
 
   submitSearchingText(submitText: string) {
-    this.searchingText = submitText;
-    this.submitSearch.emit(this.searchingText);
-    this.searchingText = '';
+    this.submitSearch.emit(submitText);
   }
 
-  setSortingField(field: string) {
-    this.setSorting.emit(field);
-  }
-
-  setSortingIsDesc(isDesc: boolean) {
-    this.setSortIsDesc.emit(isDesc);
+  submitSortingOptions(options: SortingOptions) {
+    this.setSortingOptions.emit(options);
   }
 
   setSortingText(text: string) {
     this.setSortText.emit(text);
-  };
+  }
 }

@@ -11,6 +11,5 @@ export class SearchFormComponent {
 
   submitSearchingText() {
     this.submitSearch.emit(this.searchingText);
-    this.searchingText = '';
   }
 }

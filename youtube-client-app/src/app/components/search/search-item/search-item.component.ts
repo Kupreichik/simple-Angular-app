@@ -8,14 +8,16 @@ import { data } from '../../../constants/response.constant';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent implements OnInit {
-  @Input() itemData: SearchItem = data.items[0];
-  previewSrc!: string;
+  @Input() itemData!: SearchItem
   fullTitle!: string;
   publishedDate!: string;
 
   ngOnInit(): void {
-    this.previewSrc = this.itemData.snippet.thumbnails.medium.url;
     this.fullTitle = this.itemData.snippet.title;
     this.publishedDate = this.itemData.snippet.publishedAt;
+  }
+
+  get previewSrc() {
+    return this.itemData.snippet.thumbnails.medium.url;
   }
 }

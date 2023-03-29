@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SortingOptions } from './models/sorting-options.model';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +17,9 @@ export class AppComponent {
     this.searching = searchingText;
   }
 
-  setSortingField(field: string) {
-    this.sortField = field;
-  }
-
-  setSortingIsDesc(isDesc: boolean) {
-    this.isDesc = isDesc;
+  setSortingOptions(options: SortingOptions) {
+    this.sortField = options.field;
+    this.isDesc = options.isDesc;
   }
 
   setSortingText(text: string) {

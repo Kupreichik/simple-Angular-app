@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output  } from '@angular/core';
+import { SortingOptions } from 'src/app/models/sorting-options.model';
 
 @Component({
   selector: 'app-sort-form',
@@ -6,16 +7,14 @@ import { Component, EventEmitter, Output  } from '@angular/core';
   styleUrls: ['./sort-form.component.scss'],
 })
 export class SortFormComponent {
-  @Output() setSorting = new EventEmitter<string>();
-  @Output() setSortIsDesc = new EventEmitter<boolean>();
+  @Output() setSortingOptions = new EventEmitter<SortingOptions>();
   @Output() setSortingText = new EventEmitter<string>();
   isDesc = false;
   sortingText = '';
 
   setSortingField(field: string) {
-    this.setSorting.emit(field);
     this.isDesc = !this.isDesc;
-    this.setSortIsDesc.emit(this.isDesc);
+    this.setSortingOptions.emit({ field, isDesc: this.isDesc });
   }
 
   submitSortingText() {

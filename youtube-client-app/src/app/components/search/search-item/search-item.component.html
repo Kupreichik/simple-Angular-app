@@ -1,6 +1,6 @@
 <div class="search-item">
   <div class="video-preview">
-    <img class="video-preview-img" [src]="previewSrc" alt="video preview">
+    <img class="video-preview-img" [src]="previewSrc" [alt]="itemData.snippet.title | shortenTitle">
   </div>
 
   <div class="video-data">
@@ -9,7 +9,6 @@
     <mat-icon class="icon">heart_broken</mat-icon><span>{{itemData.statistics.dislikeCount}}</span>
     <mat-icon class="icon">forum</mat-icon><span>{{itemData.statistics.commentCount}}</span>
   </div>
-
 
   <h2 [title]="fullTitle">{{ itemData.snippet.title | shortenTitle }}</h2>
 

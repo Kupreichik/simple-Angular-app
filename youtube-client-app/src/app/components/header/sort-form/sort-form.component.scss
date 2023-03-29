@@ -1,0 +1,35 @@
+.sort-bar {
+  width: 100%;
+  height: 50px;
+  background: #E5E5E5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+  
+  .sort-title {
+    font-size: 12px;
+    color: #929292;
+  }
+
+  .sort-item {
+
+    text-decoration: underline;
+    color: #2F80ED;
+    font-size: 12px;
+  }
+
+  .click-item {
+    cursor: pointer;
+  }
+
+  input {
+    border: none;
+    width: 149px;
+  }
+
+  button {
+    border: none;
+    background: none;
+  }
+}

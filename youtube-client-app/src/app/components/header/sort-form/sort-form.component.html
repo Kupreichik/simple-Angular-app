@@ -1,1 +1,7 @@
-<p>sort-form works!</p>
+<div class="sort-bar">
+  <span class="sort-title">Sorting by:</span>
+  <button (click)="setSortingField('date')" class="sort-item click-item">date</button>
+  <button (click)="setSortingField('views')" class="sort-item click-item">count of views</button>
+  <button class="sort-item">by word or sentence</button>
+  <input class="search-field" type="search" [(ngModel)]="sortingText" (input)="submitSortingText()">
+</div>

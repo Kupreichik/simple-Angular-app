@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HeaderComponent, SearchFormComponent, SortFormComponent, SearchResultsComponent, SearchItemComponent } from './components';
+import { ShortenTitlePipe, SortItemsPipe, SortByTextPipe } from './pipes';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header/header.component';
-import { SearchFormComponent } from './components/header/search-form/search-form.component';
-import { SortFormComponent } from './components/header/sort-form/sort-form.component';
-import { SearchResultsComponent } from './components/search/search-results/search-results.component';
-import { SearchItemComponent } from './components/search/search-item/search-item.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import { PublicationDateColorDirective } from './directives/publication-date-color.directive';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,19 @@ import { SearchItemComponent } from './components/search/search-item/search-item
     SearchFormComponent,
     SortFormComponent,
     SearchResultsComponent,
-    SearchItemComponent
+    SearchItemComponent,
+    ShortenTitlePipe,
+    PublicationDateColorDirective,
+    SortItemsPipe,
+    SortByTextPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatButtonModule,
+    MatIconModule,
+    NoopAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

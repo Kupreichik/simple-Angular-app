@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CoreModule } from './core/core.module';
-import { YoutubeModule } from './youtube/youtube.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { YoutubeModule } from './youtube/youtube.module';
     AppRoutingModule,
     NoopAnimationsModule,
     CoreModule,
-    YoutubeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

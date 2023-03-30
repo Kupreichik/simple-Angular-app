@@ -4,33 +4,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
-import {
-  HeaderComponent,
-  SearchFormComponent,
-  SortFormComponent
-} from './components';
-
-
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    SearchFormComponent,
-    SortFormComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    FormsModule,
   ],
   exports: [
     MatButtonModule,
     MatIconModule,
     FormsModule,
-    HeaderComponent,
-    SearchFormComponent,
-    SortFormComponent
-  ],
-    providers: [],
+    CommonModule,
+  ]
 })
-export class CoreModule {}
+export class SharedModule { }

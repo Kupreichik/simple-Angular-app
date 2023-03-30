@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output  } from '@angular/core';
-import { SortingOptions } from 'src/app/youtube/models/sorting-options.model';
+import { Component } from '@angular/core';
 import { SortService } from '../../services/sort/sort.service';
 
 @Component({

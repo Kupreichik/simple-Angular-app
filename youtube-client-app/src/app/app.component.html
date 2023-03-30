@@ -1,11 +1,3 @@
-<app-header 
-  (submitSearch)="submitSearchingText($event)"
-  (setSortingOptions)="setSortingOptions($event)"
-  (setSortText)="setSortingText($event)"
-  ></app-header>
-<app-search-results
-  *ngIf="searching"
-  [sortField]="sortField"
-  [isDesc]="isDesc"
-  [sortText]="sortText"></app-search-results>
+<app-header></app-header>
+<app-search-results-page></app-search-results-page>
 <router-outlet></router-outlet>

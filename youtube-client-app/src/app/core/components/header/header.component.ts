@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { SortingOptions } from 'src/app/models/sorting-options.model';
+import { SortingOptions } from 'src/app/youtube/models/sorting-options.model';
 
 @Component({
   selector: 'app-header',

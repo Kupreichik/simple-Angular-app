@@ -3,7 +3,7 @@
     <button class="play-btn" mat-raised-button>
       <mat-icon class="play-icon">play_arrow</mat-icon>
     </button>
-    <app-search-form (submitSearch)="submitSearchingText($event)"></app-search-form>
+    <app-search-form></app-search-form>
     <button class="settings-btn" mat-raised-button (click)="toggleSortingVisible()">
       <mat-icon class="settings-icon">tune</mat-icon>
     </button>
@@ -18,7 +18,4 @@
     </div>
   </div>
 </header>
-<app-sort-form *ngIf="sortingVisible"
-  (setSortingOptions)="submitSortingOptions($event)"
-  (setSortingText)="setSortingText($event)"
-  ></app-sort-form>
+<app-sort-form *ngIf="sortingVisible"></app-sort-form>

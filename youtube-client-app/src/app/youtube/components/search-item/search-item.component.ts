@@ -1,6 +1,5 @@
 import { Input, Component, OnInit } from '@angular/core';
-import { SearchItem } from 'src/app/models/search-item.model';
-import { data } from '../../../constants/response.constant';
+import { SearchItem } from 'src/app/youtube/models/search-item.model';
 
 @Component({
   selector: 'app-search-item',
@@ -8,7 +7,7 @@ import { data } from '../../../constants/response.constant';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent implements OnInit {
-  @Input() itemData!: SearchItem
+  @Input() itemData!: SearchItem;
   fullTitle!: string;
   publishedDate!: string;
 

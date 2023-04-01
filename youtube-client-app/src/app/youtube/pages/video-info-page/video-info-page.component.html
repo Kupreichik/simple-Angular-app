@@ -1,6 +1,8 @@
 <button  mat-button [appPublicationDateColor]="publishedDate" class="back-btn" (click)="goBack()"
 >&lt;</button>
-<img class="card-page-img" [src]="previewSrc" class="video-container">
+<div class="card-img-container">
+  <img class="card-page-img" [src]="previewSrc">
+</div>
 <div class="description-container">
   <div class="card-page-title">
     <div class="card-page-title-text">{{videoData.snippet.title}}</div>

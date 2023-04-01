@@ -3,12 +3,19 @@
   display:flex;
   justify-content: center;
 
-  .video-container {
+  .card-img-container {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
     width: 729px;
     height: 461px;
-    background-size: cover;
     border-radius: 0px 0px 0px 5px;
     box-shadow: 5px 5px 20px rgba(51, 51, 51, 0.25);
+  }
+
+  .card-page-img {
+    display: inline-block;
+    width: 100%;
   }
 
   .description-container {
@@ -25,10 +32,6 @@
     font-size: 26px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-  }
-
-  .card-page-img {
-    background-size: contain;
   }
 
   .description-container {

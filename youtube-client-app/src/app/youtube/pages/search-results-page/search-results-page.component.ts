@@ -12,6 +12,5 @@ import { data } from '../../constants/response.constant'
 export class SearchResultsPageComponent {
   searchItems: SearchItem[] = data.items;
 
-  constructor(public searchService: SearchService, public sortService: SortService) {
-  }
+  constructor(public searchService: SearchService, public sortService: SortService) {}
 }

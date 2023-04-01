@@ -6,6 +6,7 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
 import { SearchResultsPageComponent } from './pages/search-results-page/search-results-page.component';
 import { PublicationDateColorDirective } from './directives/publication-date-color.directive';
 import { SharedModule } from '../shared/shared.module';
+import { YoutubeRoutingModule } from './youtube-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,16 +18,11 @@ import { SharedModule } from '../shared/shared.module';
     PublicationDateColorDirective,
   ],
   imports: [
+    YoutubeRoutingModule,
     CommonModule,
     SharedModule
   ],
   exports: [
-    ShortenTitlePipe,
-    SortItemsPipe,
-    SortByTextPipe,
-    SearchItemComponent,
-    SearchResultsPageComponent,
-    PublicationDateColorDirective,
   ],
 })
 export class YoutubeModule {}

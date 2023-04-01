@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
-
+import { SharedModule } from '../shared/shared.module';
 import {
   HeaderComponent,
   SearchFormComponent,
   SortFormComponent
 } from './components';
-
 
 @NgModule({
   declarations: [
@@ -19,14 +15,9 @@ import {
   ],
   imports: [
     CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    FormsModule,
+    SharedModule
   ],
   exports: [
-    MatButtonModule,
-    MatIconModule,
-    FormsModule,
     HeaderComponent,
     SearchFormComponent,
     SortFormComponent

@@ -7,6 +7,9 @@ import { SearchResultsPageComponent } from './pages/search-results-page/search-r
 import { PublicationDateColorDirective } from './directives/publication-date-color.directive';
 import { SharedModule } from '../shared/shared.module';
 import { YoutubeRoutingModule } from './youtube-routing.module';
+import { ItemStatisticsComponent } from './components/item-statistics/item-statistics.component';
+import { VideoInfoPageComponent } from './pages/video-info-page/video-info-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
     SearchItemComponent,
     SearchResultsPageComponent,
     PublicationDateColorDirective,
+    ItemStatisticsComponent,
+    VideoInfoPageComponent,
+    NotFoundPageComponent,
   ],
   imports: [
     YoutubeRoutingModule,

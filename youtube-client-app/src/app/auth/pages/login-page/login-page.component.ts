@@ -16,6 +16,6 @@ export class LoginPageComponent {
   submitUser(): void {
     this.loginService.loginUser(this.userEmail, this.userPassword);
 
-    this.router.navigateByUrl('/main')
+    this.router.navigateByUrl('');
   }
 }

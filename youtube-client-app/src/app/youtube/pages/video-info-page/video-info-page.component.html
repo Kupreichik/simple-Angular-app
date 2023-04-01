@@ -1,0 +1,15 @@
+<button  mat-button [appPublicationDateColor]="publishedDate" class="back-btn" (click)="goBack()"
+>&lt;</button>
+<img class="card-page-img" [src]="previewSrc" class="video-container">
+<div class="description-container">
+  <div class="card-page-title">
+    <div class="card-page-title-text">{{videoData.snippet.title}}</div>
+    <div class="card-page-title-date">{{videoData.snippet.publishedAt | date:'fullDate'}}</div>
+  </div>
+  <div class="card-page-description">
+    <div class="card-page-description-title">Description</div>
+    <div class="card-page-description-text">{{videoData.snippet.description}}</div>
+  </div>
+  <app-item-statistics [statistics]="videoData.statistics" class="video-statistics"></app-item-statistics>
+  <div [appPublicationDateColor]="publishedDate" class="status-card-page"></div>
+</div>

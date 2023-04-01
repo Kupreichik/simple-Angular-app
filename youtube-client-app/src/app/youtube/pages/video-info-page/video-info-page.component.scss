@@ -1,0 +1,81 @@
+:host {
+  margin-top: 10vh;
+  display:flex;
+  justify-content: center;
+
+  .video-container {
+    width: 729px;
+    height: 461px;
+    background-size: cover;
+    border-radius: 0px 0px 0px 5px;
+    box-shadow: 5px 5px 20px rgba(51, 51, 51, 0.25);
+  }
+
+  .description-container {
+    width: 436px;
+    height: 461px;
+    background: #E5E5E5;
+    box-shadow: 5px 5px 20px rgba(51, 51, 51, 0.25);
+  }
+
+  .back-btn {
+    min-width: 32px;
+    height: 32px;
+    color: white;
+    font-size: 26px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .card-page-img {
+    background-size: contain;
+  }
+
+  .description-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 35px 16px 0px 35px;
+    border-radius: 0px 5px 5px 0px;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    .card-page-title {
+
+      .card-page-title-text {
+        font-size: 24px;
+      }
+
+      .card-page-title-date {
+        font-size: 10px;
+      }
+    }
+
+    .card-page-description {
+      flex-shrink: 1;
+      overflow: hidden;
+
+      .card-page-description-title {
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .card-page-description-text{
+        width: 365px;
+        font-size: 12px;
+      }
+    }
+
+    .video-statistics {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    .status-card-page {
+      flex-shrink: 0;
+      width: 436px;
+      margin-left: -35px;
+      height: 5px;
+    }
+  }
+}

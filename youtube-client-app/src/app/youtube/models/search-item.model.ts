@@ -25,14 +25,16 @@ export interface SearchItem {
     };
     defaultAudioLanguage: string;
   };
-  statistics: {
-    viewCount: string;
-    likeCount: string;
-    dislikeCount: string;
-    favoriteCount: string;
-    commentCount: string;
-  };
+  statistics: Statistics;
 }
+
+export type Statistics = {
+  viewCount: string;
+  likeCount: string;
+  dislikeCount: string;
+  favoriteCount: string;
+  commentCount: string;
+};
 
 type ThumbnailsData = {
   url: string;

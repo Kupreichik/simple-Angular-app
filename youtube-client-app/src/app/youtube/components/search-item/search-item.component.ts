@@ -1,4 +1,5 @@
 import { Input, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SearchItem } from 'src/app/youtube/models/search-item.model';
 
 @Component({
@@ -9,14 +10,22 @@ import { SearchItem } from 'src/app/youtube/models/search-item.model';
 export class SearchItemComponent implements OnInit {
   @Input() itemData!: SearchItem;
   fullTitle!: string;
-  publishedDate!: string;
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.fullTitle = this.itemData.snippet.title;
-    this.publishedDate = this.itemData.snippet.publishedAt;
   }
 
-  get previewSrc() {
+  get previewSrc(): string {
     return this.itemData.snippet.thumbnails.medium.url;
+  }
+
+  get publishedDate(): string {
+    return this.itemData.snippet.publishedAt;
+  }
+
+  openVideoInfoPage(): void {
+    this.router.navigate(['/video', this.itemData.id]);
   }
 }

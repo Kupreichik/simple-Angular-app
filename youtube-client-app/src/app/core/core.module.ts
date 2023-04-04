@@ -7,20 +7,18 @@ import {
   SortFormComponent
 } from './components';
 
+const COMPONENTS = [HeaderComponent, SearchFormComponent, SortFormComponent];
+
 @NgModule({
   declarations: [
-    HeaderComponent,
-    SearchFormComponent,
-    SortFormComponent
+    ...COMPONENTS
   ],
   imports: [
     CommonModule,
     SharedModule
   ],
   exports: [
-    HeaderComponent,
-    SearchFormComponent,
-    SortFormComponent
+    ...COMPONENTS
   ],
     providers: [],
 })

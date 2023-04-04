@@ -1,4 +1,4 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component } from '@angular/core';
 import { Statistics } from '../../models/search-item.model';
 
 @Component({
@@ -8,6 +8,4 @@ import { Statistics } from '../../models/search-item.model';
 })
 export class ItemStatisticsComponent {
   @Input() statistics!: Statistics;
-
-
 }

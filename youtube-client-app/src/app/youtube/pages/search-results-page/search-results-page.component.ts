@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchService } from 'src/app/core/services/search/search.service';
 import { SortService } from 'src/app/core/services/sort/sort.service';
 import { SearchItem } from 'src/app/youtube/models/search-item.model';
-import { data } from '../../constants/response.constant'
+import { VideoService } from '../../services/video.service';
 
 @Component({
   selector: 'app-search-results-page',
@@ -10,7 +10,13 @@ import { data } from '../../constants/response.constant'
   styleUrls: ['./search-results-page.component.scss'],
 })
 export class SearchResultsPageComponent {
-  searchItems: SearchItem[] = data.items;
+  searchItems: SearchItem[];
 
-  constructor(public searchService: SearchService, public sortService: SortService) {}
+  constructor(
+    public searchService: SearchService,
+    public sortService: SortService,
+    private videoService: VideoService
+    ) {
+      this.searchItems = this.videoService.getAllSearchItems()
+    }
 }

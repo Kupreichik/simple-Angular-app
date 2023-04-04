@@ -10,7 +10,7 @@ import { VideoService } from '../../services/video.service';
 })
 export class VideoInfoPageComponent implements OnInit {
   id!: string;
-  videoData!: SearchItem;
+  searchItem!: SearchItem;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,23 +23,23 @@ export class VideoInfoPageComponent implements OnInit {
       this.id = params['id'];
     });
 
-    const data = this.videoService.getVideoData(this.id);
+    const data = this.videoService.getSearchItemById(this.id);
     if (!data) {
       this.router.navigateByUrl('page-not-found');
     } else {
-      this.videoData = data;
+      this.searchItem = data;
     }
   }
 
   get publishedDate(): string {
-    return this.videoData.snippet.publishedAt;
+    return this.searchItem.snippet.publishedAt;
   }
 
   get previewSrc(): string {
-    return this.videoData.snippet.thumbnails.standard.url;
+    return this.searchItem.snippet.thumbnails.standard.url;
   }
 
-  goBack(): void {
-    history.back()
-  };
+  goToPreviousPage(): void {
+    history.back();
+  }
 }

@@ -8,7 +8,11 @@ import { data } from '../constants/response.constant';
 export class VideoService {
   searchItems: SearchItem[] = data.items;
 
-  getVideoData(id: string): SearchItem | undefined {
-    return this.searchItems.find(item => item.id === id);
-  };
+  getAllSearchItems(): SearchItem[] {
+    return this.searchItems;
+  }
+
+  getSearchItemById(id: string): SearchItem | undefined {
+    return this.searchItems.find((searchItem) => searchItem.id === id);
+  }
 }

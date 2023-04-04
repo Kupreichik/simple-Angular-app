@@ -16,7 +16,7 @@
         <mat-icon class="person-icon">person</mat-icon>
       </div>
     </div>
-    <button mat-raised-button (click)="logoutUser()">Logout</button>
+    <button *ngIf="isLogoutButtonVisible()" mat-raised-button (click)="logoutUser()">Logout</button>
   </div>
 </header>
 <app-sort-form *ngIf="sortingVisible"></app-sort-form>

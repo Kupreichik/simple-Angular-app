@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { LoginService } from 'src/app/auth/services/login.service';
 
 @Component({
@@ -10,14 +9,17 @@ import { LoginService } from 'src/app/auth/services/login.service';
 export class HeaderComponent {
   sortingVisible = false;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService) {}
 
-  toggleSortingVisible() {
+  toggleSortingVisible(): void {
     this.sortingVisible = !this.sortingVisible;
   }
 
-  logoutUser() {
+  isLogoutButtonVisible(): boolean {
+    return this.loginService.isUserAuthorized();
+  }
+
+  logoutUser(): void {
     this.loginService.logoutUser();
-    this.router.navigateByUrl('/login');
   }
 }

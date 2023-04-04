@@ -1,17 +1,17 @@
-<button  mat-button [appPublicationDateColor]="publishedDate" class="back-btn" (click)="goBack()"
+<button  mat-button [appPublicationDateColor]="publishedDate" class="back-btn" (click)="goToPreviousPage()"
 >&lt;</button>
 <div class="card-img-container">
   <img class="card-page-img" [src]="previewSrc">
 </div>
 <div class="description-container">
   <div class="card-page-title">
-    <div class="card-page-title-text">{{videoData.snippet.title}}</div>
-    <div class="card-page-title-date">{{videoData.snippet.publishedAt | date:'fullDate'}}</div>
+    <div class="card-page-title-text">{{searchItem.snippet.title}}</div>
+    <div class="card-page-title-date">{{searchItem.snippet.publishedAt | date:'fullDate'}}</div>
   </div>
   <div class="card-page-description">
     <div class="card-page-description-title">Description</div>
-    <div class="card-page-description-text">{{videoData.snippet.description}}</div>
+    <div class="card-page-description-text">{{searchItem.snippet.description}}</div>
   </div>
-  <app-item-statistics [statistics]="videoData.statistics" class="video-statistics"></app-item-statistics>
+  <app-item-statistics [statistics]="searchItem.statistics" class="video-statistics"></app-item-statistics>
   <div [appPublicationDateColor]="publishedDate" class="status-card-page"></div>
 </div>

@@ -1,0 +1,48 @@
+:host {
+  display: flex;
+  margin-top: 25vh;
+  gap: 2rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-logo {
+  position: relative;
+  overflow: hidden;
+  width: 100px;
+  height: 80px;
+  border-radius: 30%;
+  background-color: #2F80ED;
+  padding: 20px 28px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.error-logo::after {
+  content: '';
+  position: absolute;
+  width: 43px;
+  height: 47px;
+  border: 5px solid #2F80ED;
+  border-top: 6px solid azure;
+  border-radius: 26px;
+  left: 24px;
+  top: 46px;
+  transform: rotate(10deg)
+}
+
+.error-logo-eye {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: azure;
+}
+
+.error-message {
+  width: 234px;
+  line-height: 1.1;
+  font-size: 24px;
+  color: #828282;
+}

@@ -1,0 +1,13 @@
+<form  class="example-form" (submit)="submitUser()">
+  <p class="login-title">Login</p>
+  <div class="email-container">
+    <label>Email</label>
+    <input placeholder="example@gmail.com" name="email" [(ngModel)]="userEmail">
+  </div>
+
+  <div class="password-container">
+    <label>Password</label>
+    <input placeholder="password" name="password" [(ngModel)]="userPassword">
+  </div>
+  <button class="login-btn" type="submit" mat-raised-button >Login</button>
+</form>

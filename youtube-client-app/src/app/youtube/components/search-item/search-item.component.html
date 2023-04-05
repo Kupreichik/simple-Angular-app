@@ -1,0 +1,12 @@
+<div class="search-item">
+  <div class="video-preview">
+    <img class="video-preview-img" [src]="previewSrc" [alt]="itemData.snippet.title | shortenTitle">
+  </div>
+
+  <app-item-statistics [statistics]="itemData.statistics"></app-item-statistics>
+
+  <h2 [title]="fullTitle">{{ itemData.snippet.title | shortenTitle }}</h2>
+
+  <button mat-button class="more-btn" (click)="openVideoInfoPage()">More...</button>
+  <div class="date-status" [appPublicationDateColor]="publishedDate"></div>
+</div>

@@ -1,0 +1,22 @@
+<header>
+  <div class="header-wrapper">
+    <button class="play-btn" mat-raised-button>
+      <mat-icon class="play-icon">play_arrow</mat-icon>
+    </button>
+    <app-search-form></app-search-form>
+    <button class="settings-btn" mat-raised-button (click)="toggleSortingVisible()">
+      <mat-icon class="settings-icon">tune</mat-icon>
+    </button>
+  </div>
+
+  <div class="login-info">
+    <span>Your Name</span>
+    <div class="user-icon">
+      <div class="user-icon-round">
+        <mat-icon class="person-icon">person</mat-icon>
+      </div>
+    </div>
+    <button *ngIf="isLogoutButtonVisible()" mat-raised-button (click)="logoutUser()">Logout</button>
+  </div>
+</header>
+<app-sort-form *ngIf="sortingVisible"></app-sort-form>

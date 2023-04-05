@@ -1,0 +1,3 @@
+<main *ngIf="searchService.searchText">
+  <app-search-item *ngFor="let item of (searchItems | sortItems: sortService.sortField: sortService.isDesc | sortByText: sortService.sortText)" [itemData]="item"></app-search-item>
+</main>

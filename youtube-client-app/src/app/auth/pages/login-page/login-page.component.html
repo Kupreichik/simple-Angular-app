@@ -1,13 +1,37 @@
-<form  class="example-form" (submit)="submitUser()">
+<form  class="example-form" [formGroup]="loginForm" (submit)="submitUser()">
   <p class="login-title">Login</p>
   <div class="email-container">
     <label>Email</label>
-    <input placeholder="example@gmail.com" name="email" [(ngModel)]="userEmail">
+    <input placeholder="example@gmail.com" formControlName="userEmail">
+
+    <div *ngIf="userEmail?.invalid && userEmail?.touched" class="validation">
+      <small *ngIf="userEmail?.errors?.['required']">
+        Please enter a login email
+      </small>
+    
+      <small *ngIf="userEmail?.errors?.['email']">
+        The login email is invalid
+      </small>
+    </div>
   </div>
 
   <div class="password-container">
     <label>Password</label>
-    <input placeholder="password" name="password" [(ngModel)]="userPassword">
+    <input placeholder="password" formControlName="userPassword">
+
+    <div *ngIf="userPassword?.invalid && userPassword?.touched" class="validation">
+      <small *ngIf="userPassword?.errors?.['required']">
+        Please enter a password
+      </small>
+    
+      <ul *ngIf="userPassword?.errors?.['pattern']">
+        <small>password isn't strong enough:</small>
+        <li><small>enter at least 8 characters</small></li>
+        <li><small>a mixture of both uppercase and lowercase letters</small></li>
+        <li><small>a mixture of letters and numbers</small></li>
+        <li><small>inclusion of at least one special character, e.g., ! @ # ?</small></li>
+      </ul>
+    </div>
   </div>
-  <button class="login-btn" type="submit" mat-raised-button >Login</button>
+  <button class="login-btn" type="submit" mat-raised-button [disabled]="!loginForm.valid">Login</button>
 </form>

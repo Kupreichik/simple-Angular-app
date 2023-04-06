@@ -19,6 +19,10 @@ export class HeaderComponent {
     return this.loginService.isUserAuthorized();
   }
 
+  isAdminButtonVisible(): boolean {
+    return this.loginService.isUserAuthorized() && this.loginService.isUserAdmin;
+  };
+
   logoutUser(): void {
     this.loginService.logoutUser();
   }

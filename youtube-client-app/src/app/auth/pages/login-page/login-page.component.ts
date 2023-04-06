@@ -10,6 +10,7 @@ import { passwordPattern } from '../../constants/regExpPatterns.constant';
 })
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
+  isPasswordVisible = false;
 
   constructor(private loginService: LoginService, private formBuilder: FormBuilder) {}
 
@@ -24,6 +25,14 @@ export class LoginPageComponent implements OnInit {
     if(this.loginForm.valid) {
       this.loginService.loginUser(this.userEmail?.value, this.userPassword?.value);
     }
+  }
+
+  togglePasswordVisible(): void {
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
+  setInputType(): string {
+    return this.isPasswordVisible ? 'text' : 'password';
   }
 
   get userEmail() {

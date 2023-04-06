@@ -17,7 +17,15 @@
 
   <div class="password-container">
     <label>Password</label>
-    <input placeholder="password" formControlName="userPassword">
+    <input 
+      placeholder="password" 
+      formControlName="userPassword" 
+      class="password-input" 
+      [type]="setInputType()"
+    >
+    <mat-icon class="visibility-icon" (click)="togglePasswordVisible()">
+      {{isPasswordVisible ? 'visibility' : 'visibility_off'}}
+    </mat-icon>
 
     <div *ngIf="userPassword?.invalid && userPassword?.touched" class="validation">
       <small *ngIf="userPassword?.errors?.['required']">

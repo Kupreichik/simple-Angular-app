@@ -69,5 +69,20 @@ $btn-color: #2F80ED;
     li {
       padding-left: 6px;
     }
+
+    .password-input {
+      padding-right: 30px;
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .visibility-icon {
+      position: absolute;
+      color: #828282;
+      top: 26px;
+      right: 4px;
+    }
   } 
 }

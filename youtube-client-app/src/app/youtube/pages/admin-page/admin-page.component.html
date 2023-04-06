@@ -1,1 +1,71 @@
-<p>admin-page works!</p>
+<form class="card-create-form" [formGroup]="cardCreateForm">
+  <p class="create-form-title">Create new card</p>
+
+  <div>
+    <label>Title *</label>
+    <input formControlName="cardTitle">
+    <div *ngIf="cardTitle?.invalid && cardTitle?.touched" class="validation">
+      <small *ngIf="cardTitle?.errors?.['required']">
+        Please enter a title
+      </small>
+      <small *ngIf="cardTitle?.errors?.['minlength']">
+        The title is too short
+      </small>
+      <small *ngIf="cardTitle?.errors?.['maxlength']">
+        The title is too long
+      </small>
+    </div>
+  </div>
+
+  <div>
+    <label>Description</label>
+    <input formControlName="cardDescription">
+    <div *ngIf="cardDescription?.invalid && cardDescription?.touched" class="validation">
+      <small *ngIf="cardDescription?.errors?.['maxlength']">
+        The description is too long
+      </small>
+    </div>
+  </div>
+
+  <div>
+    <label>Img *</label>
+    <input formControlName="cardImg">
+    <div *ngIf="cardImg?.invalid && cardImg?.touched" class="validation">
+      <small *ngIf="cardImg?.errors?.['required']">
+        Please enter a link to the image
+      </small>
+      <small *ngIf="cardImg?.errors?.['pattern']">
+        The image link is invalid
+      </small>
+    </div>
+  </div>
+
+  <div>
+    <label>Link video *</label>
+    <input formControlName="cardLink">
+    <div *ngIf="cardLink?.invalid && cardLink?.touched" class="validation">
+      <small *ngIf="cardLink?.errors?.['required']">
+        Please enter a link to the video
+      </small>
+      <small *ngIf="cardLink?.errors?.['pattern']">
+        The video link is invalid
+      </small>
+    </div>
+  </div>
+
+  <div>
+    <label>Date</label>
+    <input type="date" formControlName="cardDate">
+    <div *ngIf="cardDate?.invalid && cardDate?.touched" class="validation">
+      <small *ngIf="cardDate?.errors?.['required']">
+        Please enter a creation date
+      </small>
+      <small *ngIf="cardDate?.errors?.['incorrectDate']">
+        The date is invalid
+      </small>
+    </div>
+  </div>
+
+  <button class="create-card-btn" type="submit" mat-raised-button [disabled]="!cardCreateForm.valid">Create card
+  </button>
+</form>

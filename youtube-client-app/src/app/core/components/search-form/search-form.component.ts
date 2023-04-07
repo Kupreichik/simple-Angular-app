@@ -1,24 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search/search.service';
 import { FormControl } from '@angular/forms';
-import { debounceTime, filter } from 'rxjs';
+import { Subscription, debounceTime, filter } from 'rxjs';
 
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],
 })
-export class SearchFormComponent implements OnInit {
-  searchInput = new FormControl;
+export class SearchFormComponent implements OnInit, OnDestroy {
+  searchInput = new FormControl();
+  inputSubscription!: Subscription;
 
   constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {
-    this.searchInput.valueChanges.pipe(
-      filter(value => value.length >= 3),
-      debounceTime(500)
-    ).subscribe(
-      (value) => this.searchService.setSearchText(value)
-    )
+    this.inputSubscription = this.searchInput.valueChanges
+      .pipe(
+        filter((value) => value.length >= 3),
+        debounceTime(500),
+      )
+      .subscribe((value) => this.searchService.setSearchText(value));
+  }
+
+  ngOnDestroy(): void {
+    this.inputSubscription.unsubscribe();
   }
 }

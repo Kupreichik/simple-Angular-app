@@ -6,5 +6,5 @@ export const AuthGuard = (): boolean | UrlTree => {
   const router = inject(Router);
   const loginService = inject(LoginService);
 
-  return loginService.isUserAuthorized() || router.parseUrl('/login');
+  return loginService.isLoggedIn.getValue() || router.parseUrl('/login');
 }

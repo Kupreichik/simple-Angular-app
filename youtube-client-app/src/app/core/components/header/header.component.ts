@@ -1,27 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { LoginService } from 'src/app/auth/services/login.service';
+import { defaultLoginBlockText } from '../../constants/constants';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
   sortingVisible = false;
+  userLoginName = '';
+  isLogoutButtonVisible!: boolean;
+  isLoggedInSubscription!: Subscription;
 
   constructor(private loginService: LoginService) {}
+
+  ngOnInit(): void {
+    this.isLoggedInSubscription = this.loginService.isLoggedIn.subscribe(
+      (isLogged) => {
+        this.isLogoutButtonVisible = isLogged;
+        this.setUserLoginName();
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.isLoggedInSubscription.unsubscribe();
+  }
+
+  setUserLoginName(): void {
+    this.userLoginName = this.loginService.userLoginName || defaultLoginBlockText;
+  }
 
   toggleSortingVisible(): void {
     this.sortingVisible = !this.sortingVisible;
   }
 
-  isLogoutButtonVisible(): boolean {
-    return this.loginService.isUserAuthorized();
-  }
-
   isAdminButtonVisible(): boolean {
-    return this.loginService.isUserAuthorized() && this.loginService.isUserAdmin;
-  };
+    return this.isLogoutButtonVisible && this.loginService.isUserAdmin;
+  }
 
   logoutUser(): void {
     this.loginService.logoutUser();

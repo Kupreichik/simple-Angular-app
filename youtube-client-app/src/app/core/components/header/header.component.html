@@ -10,13 +10,13 @@
   </div>
 
   <div class="login-info">
-    <span>Your Name</span>
+    <span>{{userLoginName}}</span>
     <div class="user-icon">
       <div class="user-icon-round">
         <mat-icon class="person-icon">person</mat-icon>
       </div>
     </div>
-    <button *ngIf="isLogoutButtonVisible()" mat-raised-button (click)="logoutUser()" title="Logout" class="small-button">
+    <button *ngIf="isLogoutButtonVisible" mat-raised-button (click)="logoutUser()" title="Logout" class="small-button">
       <mat-icon>exit_to_app</mat-icon>
     </button>
     <button *ngIf="isAdminButtonVisible()" routerLink="admin" mat-raised-button title="Admin page" class="small-button">

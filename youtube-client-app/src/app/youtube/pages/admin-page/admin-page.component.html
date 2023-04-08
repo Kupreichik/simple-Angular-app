@@ -5,13 +5,13 @@
     <label>Title *</label>
     <input formControlName="cardTitle">
     <div *ngIf="cardTitle?.invalid && cardTitle?.touched" class="validation">
-      <small *ngIf="cardTitle?.errors?.['required']">
+      <small *ngIf="cardTitleError('required')">
         Please enter a title
       </small>
-      <small *ngIf="cardTitle?.errors?.['minlength']">
+      <small *ngIf="cardTitleError('minlength')">
         The title is too short
       </small>
-      <small *ngIf="cardTitle?.errors?.['maxlength']">
+      <small *ngIf="cardTitleError('maxlength')">
         The title is too long
       </small>
     </div>
@@ -21,7 +21,7 @@
     <label>Description</label>
     <input formControlName="cardDescription">
     <div *ngIf="cardDescription?.invalid && cardDescription?.touched" class="validation">
-      <small *ngIf="cardDescription?.errors?.['maxlength']">
+      <small *ngIf="cardDescriptionError('maxlength')">
         The description is too long
       </small>
     </div>
@@ -31,10 +31,10 @@
     <label>Img *</label>
     <input formControlName="cardImg">
     <div *ngIf="cardImg?.invalid && cardImg?.touched" class="validation">
-      <small *ngIf="cardImg?.errors?.['required']">
+      <small *ngIf="cardImgError('required')">
         Please enter a link to the image
       </small>
-      <small *ngIf="cardImg?.errors?.['pattern']">
+      <small *ngIf="cardImgError('pattern')">
         The image link is invalid
       </small>
     </div>
@@ -44,23 +44,23 @@
     <label>Link video *</label>
     <input formControlName="cardLink">
     <div *ngIf="cardLink?.invalid && cardLink?.touched" class="validation">
-      <small *ngIf="cardLink?.errors?.['required']">
+      <small *ngIf="cardLinkError('required')">
         Please enter a link to the video
       </small>
-      <small *ngIf="cardLink?.errors?.['pattern']">
+      <small *ngIf="cardLinkError('pattern')">
         The video link is invalid
       </small>
     </div>
   </div>
 
   <div>
-    <label>Date</label>
-    <input type="date" formControlName="cardDate">
+    <label>Date *</label>
+    <input type="date" placeholder="dd.mm.yyyy" formControlName="cardDate">
     <div *ngIf="cardDate?.invalid && cardDate?.touched" class="validation">
-      <small *ngIf="cardDate?.errors?.['required']">
+      <small *ngIf="cardDateError('required')">
         Please enter a creation date
       </small>
-      <small *ngIf="cardDate?.errors?.['incorrectDate']">
+      <small *ngIf="cardDateError('incorrectDate')">
         The date is invalid
       </small>
     </div>

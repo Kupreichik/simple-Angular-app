@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
-import { passwordPattern } from '../../constants/regExpPatterns.constant';
+import { ValidateService } from 'src/app/core/services/validate/validate.service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,17 +12,30 @@ export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   isPasswordVisible = false;
 
-  constructor(private loginService: LoginService, private formBuilder: FormBuilder) {}
+  constructor(
+    private loginService: LoginService,
+    private validateService: ValidateService,
+    private formBuilder: FormBuilder,
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       userEmail: ['', [Validators.required, Validators.email]],
-      userPassword: ['', [Validators.required, Validators.pattern(passwordPattern)]],
+      userPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          this.validateService.mixedCaseValidator,
+          this.validateService.alphanumericValidator,
+          this.validateService.specialCharacterValidator,
+        ],
+      ],
     });
   }
 
   submitUser(): void {
-    if(this.loginForm.valid) {
+    if (this.loginForm.valid) {
       this.loginService.loginUser(this.userEmail?.value, this.userPassword?.value);
     }
   }
@@ -35,11 +48,23 @@ export class LoginPageComponent implements OnInit {
     return this.isPasswordVisible ? 'text' : 'password';
   }
 
-  get userEmail() {
+  userEmailError(error: string): ValidationErrors | null | undefined {
+    return this.userEmail?.errors?.[error];
+  }
+
+  userPasswordError(error: string): ValidationErrors | null | undefined {
+    return this.userPassword?.errors?.[error];
+  }
+
+  get hasPasswordError(): boolean {
+    return this.userPassword?.errors !== null;
+  }
+
+  get userEmail(): AbstractControl | null {
     return this.loginForm.get('userEmail');
   }
 
-  get userPassword() {
+  get userPassword(): AbstractControl | null {
     return this.loginForm.get('userPassword');
   }
 }

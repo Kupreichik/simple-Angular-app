@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ValidationErrors, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { urlPattern } from '../../constants/regexp-patterns.constant';
-import { ValidateService } from '../../services/validate/validate.service';
+import { ValidateService } from '../../../core/services/validate/validate.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -41,5 +41,25 @@ export class AdminPageComponent implements OnInit {
 
   get cardDate() {
     return this.cardCreateForm.get('cardDate');
+  }
+
+  cardTitleError(error: string): ValidationErrors | null | undefined {
+    return this.cardTitle?.errors?.[error];
+  }
+
+  cardDescriptionError(error: string): ValidationErrors | null | undefined {
+    return this.cardDescription?.errors?.[error];
+  }
+
+  cardImgError(error: string): ValidationErrors | null | undefined {
+    return this.cardImg?.errors?.[error];
+  }
+
+  cardLinkError(error: string): ValidationErrors | null | undefined {
+    return this.cardLink?.errors?.[error];
+  }
+
+  cardDateError(error: string): ValidationErrors | null | undefined {
+    return this.cardDate?.errors?.[error];
   }
 }

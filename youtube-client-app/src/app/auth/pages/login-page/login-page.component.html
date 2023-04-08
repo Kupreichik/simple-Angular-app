@@ -5,11 +5,11 @@
     <input placeholder="example@gmail.com" formControlName="userEmail">
 
     <div *ngIf="userEmail?.invalid && userEmail?.touched" class="validation">
-      <small *ngIf="userEmail?.errors?.['required']">
+      <small *ngIf="userEmailError('required')">
         Please enter a login email
       </small>
     
-      <small *ngIf="userEmail?.errors?.['email']">
+      <small *ngIf="userEmailError('email')">
         The login email is invalid
       </small>
     </div>
@@ -28,16 +28,16 @@
     </mat-icon>
 
     <div *ngIf="userPassword?.invalid && userPassword?.touched" class="validation">
-      <small *ngIf="userPassword?.errors?.['required']">
+      <small *ngIf="userPasswordError('required')">
         Please enter a password
       </small>
     
-      <ul *ngIf="userPassword?.errors?.['pattern']">
+      <ul *ngIf="hasPasswordError && !userPasswordError('required')">
         <small>password isn't strong enough:</small>
-        <li><small>enter at least 8 characters</small></li>
-        <li><small>a mixture of both uppercase and lowercase letters</small></li>
-        <li><small>a mixture of letters and numbers</small></li>
-        <li><small>inclusion of at least one special character, e.g., ! @ # ?</small></li>
+        <li *ngIf="userPasswordError('minlength')"><small>enter at least 8 characters</small></li>
+        <li *ngIf="userPasswordError('mixedCase')"><small>a mixture of both uppercase and lowercase letters</small></li>
+        <li *ngIf="userPasswordError('alphanumeric')"><small>a mixture of letters and numbers</small></li>
+        <li *ngIf="userPasswordError('specialCharacter')"><small>inclusion of at least one special character, e.g., ! @ # ?</small></li>
       </ul>
     </div>
   </div>

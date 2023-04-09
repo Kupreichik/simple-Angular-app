@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SearchItem } from 'src/app/youtube/models/search-item.model';
-import { data } from '../constants/response.constant';
+import { data } from '../../constants/response.constant';
 
 @Injectable({
   providedIn: 'root',

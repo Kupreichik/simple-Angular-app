@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { SearchItem } from '../../models/search-item.model';
-import { VideoService } from '../../services/video.service';
+import { VideoService } from '../../services/video-service/video.service';
 
 @Component({
   selector: 'app-video-info-page',

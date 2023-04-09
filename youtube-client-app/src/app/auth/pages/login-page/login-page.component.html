@@ -1,13 +1,45 @@
-<form  class="example-form" (submit)="submitUser()">
+<form  class="example-form" [formGroup]="loginForm" (ngSubmit)="submitUser()">
   <p class="login-title">Login</p>
   <div class="email-container">
     <label>Email</label>
-    <input placeholder="example@gmail.com" name="email" [(ngModel)]="userEmail">
+    <input placeholder="example@gmail.com" formControlName="userEmail">
+
+    <div *ngIf="userEmail?.invalid && userEmail?.touched" class="validation">
+      <small *ngIf="userEmailError('required')">
+        Please enter a login email
+      </small>
+    
+      <small *ngIf="userEmailError('email')">
+        The login email is invalid
+      </small>
+    </div>
   </div>
 
   <div class="password-container">
     <label>Password</label>
-    <input placeholder="password" name="password" [(ngModel)]="userPassword">
+    <input 
+      placeholder="password" 
+      formControlName="userPassword" 
+      class="password-input" 
+      [type]="setInputType()"
+    >
+    <mat-icon class="visibility-icon" (click)="togglePasswordVisible()">
+      {{isPasswordVisible ? 'visibility' : 'visibility_off'}}
+    </mat-icon>
+
+    <div *ngIf="userPassword?.invalid && userPassword?.touched" class="validation">
+      <small *ngIf="userPasswordError('required')">
+        Please enter a password
+      </small>
+    
+      <ul *ngIf="hasPasswordError && !userPasswordError('required')">
+        <small>password isn't strong enough:</small>
+        <li *ngIf="userPasswordError('minlength')"><small>enter at least 8 characters</small></li>
+        <li *ngIf="userPasswordError('mixedCase')"><small>a mixture of both uppercase and lowercase letters</small></li>
+        <li *ngIf="userPasswordError('alphanumeric')"><small>a mixture of letters and numbers</small></li>
+        <li *ngIf="userPasswordError('specialCharacter')"><small>inclusion of at least one special character, e.g., ! @ # ?</small></li>
+      </ul>
+    </div>
   </div>
-  <button class="login-btn" type="submit" mat-raised-button >Login</button>
+  <button class="login-btn" type="submit" mat-raised-button [disabled]="!loginForm.valid">Login</button>
 </form>

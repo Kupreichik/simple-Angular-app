@@ -16,7 +16,12 @@
         <mat-icon class="person-icon">person</mat-icon>
       </div>
     </div>
-    <button *ngIf="isLogoutButtonVisible()" mat-raised-button (click)="logoutUser()">Logout</button>
+    <button *ngIf="isLogoutButtonVisible()" mat-raised-button (click)="logoutUser()" title="Logout" class="small-button">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+    <button *ngIf="isAdminButtonVisible()" routerLink="admin" mat-raised-button title="Admin page" class="small-button">
+      <mat-icon>note_add</mat-icon>
+    </button>
   </div>
 </header>
 <app-sort-form *ngIf="sortingVisible"></app-sort-form>

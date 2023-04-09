@@ -1,0 +1,71 @@
+<form class="card-create-form" [formGroup]="cardCreateForm">
+  <p class="create-form-title">Create new card</p>
+
+  <div>
+    <label>Title *</label>
+    <input formControlName="cardTitle">
+    <div *ngIf="cardTitle?.invalid && cardTitle?.touched" class="validation">
+      <small *ngIf="cardTitleError('required')">
+        Please enter a title
+      </small>
+      <small *ngIf="cardTitleError('minlength')">
+        The title is too short
+      </small>
+      <small *ngIf="cardTitleError('maxlength')">
+        The title is too long
+      </small>
+    </div>
+  </div>
+
+  <div>
+    <label>Description</label>
+    <input formControlName="cardDescription">
+    <div *ngIf="cardDescription?.invalid && cardDescription?.touched" class="validation">
+      <small *ngIf="cardDescriptionError('maxlength')">
+        The description is too long
+      </small>
+    </div>
+  </div>
+
+  <div>
+    <label>Img *</label>
+    <input formControlName="cardImg">
+    <div *ngIf="cardImg?.invalid && cardImg?.touched" class="validation">
+      <small *ngIf="cardImgError('required')">
+        Please enter a link to the image
+      </small>
+      <small *ngIf="cardImgError('pattern')">
+        The image link is invalid
+      </small>
+    </div>
+  </div>
+
+  <div>
+    <label>Link video *</label>
+    <input formControlName="cardLink">
+    <div *ngIf="cardLink?.invalid && cardLink?.touched" class="validation">
+      <small *ngIf="cardLinkError('required')">
+        Please enter a link to the video
+      </small>
+      <small *ngIf="cardLinkError('pattern')">
+        The video link is invalid
+      </small>
+    </div>
+  </div>
+
+  <div>
+    <label>Date *</label>
+    <input type="date" placeholder="dd.mm.yyyy" formControlName="cardDate">
+    <div *ngIf="cardDate?.invalid && cardDate?.touched" class="validation">
+      <small *ngIf="cardDateError('required')">
+        Please enter a creation date
+      </small>
+      <small *ngIf="cardDateError('incorrectDate')">
+        The date is invalid
+      </small>
+    </div>
+  </div>
+
+  <button class="create-card-btn" type="submit" mat-raised-button [disabled]="!cardCreateForm.valid">Create card
+  </button>
+</form>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SearchService } from 'src/app/core/services/search/search.service';
 import { SortService } from 'src/app/core/services/sort/sort.service';
 import { SearchItem } from 'src/app/youtube/models/search-item.model';
-import { VideoService } from '../../services/video.service';
+import { VideoService } from '../../services/video-service/video.service';
 
 @Component({
   selector: 'app-search-results-page',

@@ -10,6 +10,7 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
 import { ItemStatisticsComponent } from './components/item-statistics/item-statistics.component';
 import { VideoInfoPageComponent } from './pages/video-info-page/video-info-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     ItemStatisticsComponent,
     VideoInfoPageComponent,
     NotFoundPageComponent,
+    AdminPageComponent,
   ],
   imports: [
     YoutubeRoutingModule,

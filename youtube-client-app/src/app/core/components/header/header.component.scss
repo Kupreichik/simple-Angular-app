@@ -80,4 +80,15 @@ header {
     margin-left: -3px;
     margin-top: -1px;
   }
+
+  .small-button {
+    min-width: 24px;
+    height: 24px;
+    padding: 0;
+  }
+
+  .mat-mdc-raised-button>.mat-icon {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

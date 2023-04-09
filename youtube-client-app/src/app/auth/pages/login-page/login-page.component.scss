@@ -4,7 +4,6 @@ $btn-color: #2F80ED;
   display: flex;
   justify-content: center;
   width: 350px;
-  height: 300px;
   background: #F2F2F2;
   margin: 20vh auto 0;
 
@@ -13,7 +12,7 @@ $btn-color: #2F80ED;
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 15px;
     min-width: 150px;
     max-width: 300px;
     width: 100%;
@@ -45,6 +44,45 @@ $btn-color: #2F80ED;
       width: 80px;
       align-self: flex-end;
       color: #F2F2F2;
+
+      &:disabled {
+        background-color: #7f90a5;
+      }
+    }
+
+    input.ng-touched.ng-invalid {
+      border: solid red 2px;
+    }
+
+    input.ng-touched.ng-valid {
+      border: solid green 2px;
+    }
+
+    .validation {
+      color: red;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      padding-left: 6px;
+    }
+
+    .password-input {
+      padding-right: 30px;
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .visibility-icon {
+      position: absolute;
+      color: #828282;
+      top: 26px;
+      right: 4px;
     }
   } 
 }

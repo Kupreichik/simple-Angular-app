@@ -6,6 +6,7 @@ import {
   SearchFormComponent,
   SortFormComponent
 } from './components';
+import { RouterModule } from '@angular/router';
 
 const COMPONENTS = [HeaderComponent, SearchFormComponent, SortFormComponent];
 
@@ -15,6 +16,7 @@ const COMPONENTS = [HeaderComponent, SearchFormComponent, SortFormComponent];
   ],
   imports: [
     CommonModule,
+    RouterModule,
     SharedModule
   ],
   exports: [

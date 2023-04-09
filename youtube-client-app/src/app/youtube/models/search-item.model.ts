@@ -1,7 +1,10 @@
 export interface SearchItem {
   kind: string;
   etag: string;
-  id: string;
+  id: {
+    kind: string;
+    videoId: string;
+  };
   snippet: {
     publishedAt: string;
     channelId: string;
@@ -31,7 +34,7 @@ export interface SearchItem {
 export type Statistics = {
   viewCount: string;
   likeCount: string;
-  dislikeCount: string;
+  dislikeCount?: string;
   favoriteCount: string;
   commentCount: string;
 };

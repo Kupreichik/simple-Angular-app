@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SearchService } from '../../services/search/search.service';
+import { SearchService } from '../../../youtube/services/search/search.service';
 import { FormControl } from '@angular/forms';
 import { Subscription, debounceTime, filter } from 'rxjs';
 
@@ -20,7 +20,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
         filter((value) => value.length >= 3),
         debounceTime(500),
       )
-      .subscribe((value) => this.searchService.setSearchText(value));
+      .subscribe((value) => this.searchService.updateSearchItems(value));
   }
 
   ngOnDestroy(): void {

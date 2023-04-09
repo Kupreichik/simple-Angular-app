@@ -1,42 +1,60 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { SearchItem } from '../../models/search-item.model';
-import { VideoService } from '../../services/video-service/video.service';
+import { Component, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { SearchItem, Statistics } from '../../models/search-item.model';
+import { Subscription } from 'rxjs';
+import { SearchService } from '../../services/search/search.service';
 
 @Component({
   selector: 'app-video-info-page',
   templateUrl: './video-info-page.component.html',
   styleUrls: ['./video-info-page.component.scss'],
 })
-export class VideoInfoPageComponent implements OnInit {
+export class VideoInfoPageComponent implements OnDestroy {
   id!: string;
   searchItem!: SearchItem;
+  urlParamSubscription!: Subscription;
 
   constructor(
     private route: ActivatedRoute,
-    private videoService: VideoService,
     private router: Router,
-  ) {}
-
-  ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    private searchService: SearchService,
+  ) {
+    this.urlParamSubscription = this.route.params.subscribe((params) => {
       this.id = params['id'];
     });
 
-    const data = this.videoService.getSearchItemById(this.id);
-    if (!data) {
-      this.router.navigateByUrl('page-not-found');
-    } else {
-      this.searchItem = data;
-    }
+    this.searchService.fetchSearchItems(this.id).subscribe((items) => {
+      const data = items[0];
+      if (!data) {
+        this.router.navigateByUrl('page-not-found');
+      } else {
+        this.searchItem = data;
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.urlParamSubscription.unsubscribe();
   }
 
   get publishedDate(): string {
-    return this.searchItem.snippet.publishedAt;
+    return this.searchItem?.snippet.publishedAt;
+  }
+
+  get description(): string {
+    return this.searchItem?.snippet.description;
+  }
+
+  get title(): string {
+    return this.searchItem?.snippet.title;
   }
 
   get previewSrc(): string {
-    return this.searchItem.snippet.thumbnails.standard.url;
+    return this.searchItem?.snippet.thumbnails.standard.url;
+  }
+
+  get statistics(): Statistics {
+    return this.searchItem?.statistics;
   }
 
   goToPreviousPage(): void {

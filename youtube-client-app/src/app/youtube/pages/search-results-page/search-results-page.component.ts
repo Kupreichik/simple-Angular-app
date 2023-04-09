@@ -24,4 +24,8 @@ export class SearchResultsPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.itemsSubscription.unsubscribe;
   }
+
+  hasSearchItems(): boolean {
+    return this.searchService.searchItems.getValue().length > 0;
+  }
 }

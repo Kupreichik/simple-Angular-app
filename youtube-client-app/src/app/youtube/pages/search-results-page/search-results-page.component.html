@@ -1,3 +1,7 @@
-<main *ngIf="searchService.searchItems.getValue">
+<main *ngIf="hasSearchItems() else nothingFound">
   <app-search-item *ngFor="let item of (searchItems | sortItems: sortService.sortField: sortService.isDesc | sortByText: sortService.sortText)" [itemData]="item"></app-search-item>
 </main>
+
+<ng-template #nothingFound>
+  <p class="nothing-found-block">Nothing Found</p>
+</ng-template>

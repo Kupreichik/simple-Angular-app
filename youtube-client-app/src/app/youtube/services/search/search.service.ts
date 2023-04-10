@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { SearchItem } from 'src/app/youtube/models/search-item.model';
 import { SearchResultsCount } from 'src/app/youtube/constants/response.constant';
@@ -9,7 +9,8 @@ import { SearchResults } from 'src/app/youtube/models/search-results.model';
   providedIn: 'root',
 })
 export class SearchService {
-  searchItems = new BehaviorSubject<SearchItem[]>([]);
+  searchItems$ = new BehaviorSubject<SearchItem[]>([]);
+  errorMessage = '';
 
   constructor(private http: HttpClient) {}
 
@@ -23,7 +24,7 @@ export class SearchService {
     return this.http.get<SearchResults>('search', { params }).pipe(
       map((response) => {
         return response.items.map((item) => item.id.videoId).join(',');
-      }),
+      })
     );
   }
 
@@ -36,10 +37,14 @@ export class SearchService {
   }
 
   updateSearchItems(search: string): void {
-    this.fetchSearchResults(search).subscribe((itemsId) =>
-      this.fetchSearchItems(itemsId).subscribe(
-        (searchItems) => this.searchItems.next(searchItems)
-      )
-    );
+    this.fetchSearchResults(search).subscribe({
+      next: (itemsId) => this.fetchSearchItems(itemsId).subscribe(
+        (searchItems) => this.searchItems$.next(searchItems)),
+      
+      error: (error) => {
+        this.errorMessage = error.message;
+        this.searchItems$.next([]);
+      }
+    });
   }
 }

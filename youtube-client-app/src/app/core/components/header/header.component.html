@@ -19,7 +19,7 @@
     <button *ngIf="isAdminButtonVisible()" routerLink="admin" mat-raised-button title="Admin page" class="small-button">
       <mat-icon>note_add</mat-icon>
     </button>
-    <button *ngIf="isLogoutButtonVisible" mat-raised-button (click)="logoutUser()" title="Logout" class="small-button">
+    <button *ngIf="isUserLoggedIn" mat-raised-button (click)="logoutUser()" title="Logout" class="small-button">
       <mat-icon>exit_to_app</mat-icon>
     </button>
   </div>

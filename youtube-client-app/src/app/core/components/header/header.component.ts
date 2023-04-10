@@ -11,18 +11,16 @@ import { defaultLoginBlockText } from '../../constants/constants';
 export class HeaderComponent implements OnInit, OnDestroy {
   sortingVisible = false;
   userLoginName = '';
-  isLogoutButtonVisible!: boolean;
+  isUserLoggedIn!: boolean;
   isLoggedInSubscription!: Subscription;
 
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.isLoggedInSubscription = this.loginService.isLoggedIn.subscribe(
-      (isLogged) => {
-        this.isLogoutButtonVisible = isLogged;
-        this.setUserLoginName();
-      }
-    );
+    this.isLoggedInSubscription = this.loginService.isLoggedIn$.subscribe((isLogged) => {
+      this.isUserLoggedIn = isLogged;
+      this.setUserLoginName();
+    });
   }
 
   ngOnDestroy(): void {
@@ -38,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   isAdminButtonVisible(): boolean {
-    return this.isLogoutButtonVisible && this.loginService.isUserAdmin;
+    return this.isUserLoggedIn && this.loginService.isUserAdmin;
   }
 
   logoutUser(): void {

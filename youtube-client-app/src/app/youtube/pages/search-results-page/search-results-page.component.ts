@@ -16,7 +16,7 @@ export class SearchResultsPageComponent implements OnInit, OnDestroy {
   constructor(public searchService: SearchService, public sortService: SortService) {}
 
   ngOnInit(): void {
-    this.itemsSubscription = this.searchService.searchItems.subscribe(
+    this.itemsSubscription = this.searchService.searchItems$.subscribe(
       (searchItems) => (this.searchItems = searchItems),
     );
   }
@@ -26,6 +26,10 @@ export class SearchResultsPageComponent implements OnInit, OnDestroy {
   }
 
   hasSearchItems(): boolean {
-    return this.searchService.searchItems.getValue().length > 0;
+    return this.searchItems?.length > 0;
+  }
+
+  getFetchErrorMessage(): string {
+    return this.searchService.errorMessage;
   }
 }

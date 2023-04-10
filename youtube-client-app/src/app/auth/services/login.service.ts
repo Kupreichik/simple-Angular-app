@@ -9,7 +9,7 @@ export class LoginService {
   private readonly localStorageKey = 'youtubeAppUserToken';
 
   isUserAdmin = true;
-  isLoggedIn = new BehaviorSubject<boolean>(this.isUserAuthorized());
+  isLoggedIn$ = new BehaviorSubject<boolean>(this.isUserAuthorized());
   userLoginName = this.getUserLogin();
 
   constructor(private router: Router) {}
@@ -27,7 +27,7 @@ export class LoginService {
 
     localStorage.setItem(this.localStorageKey, token);
     this.userLoginName = email;
-    this.isLoggedIn.next(true);
+    this.isLoggedIn$.next(true);
     this.isUserAdmin = true;
     this.router.navigateByUrl('');
   }
@@ -35,7 +35,7 @@ export class LoginService {
   logoutUser(): void {
     localStorage.removeItem(this.localStorageKey);
     this.userLoginName = null;
-    this.isLoggedIn.next(false);
+    this.isLoggedIn$.next(false);
     this.isUserAdmin = false;
     this.router.navigateByUrl('/login');
   }

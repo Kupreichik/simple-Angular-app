@@ -3,5 +3,5 @@
 </main>
 
 <ng-template #nothingFound>
-  <p class="nothing-found-block">Nothing Found</p>
+  <p class="nothing-found-block">{{getFetchErrorMessage() || 'Nothing Found'}}</p>
 </ng-template>

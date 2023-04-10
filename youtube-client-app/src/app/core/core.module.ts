@@ -7,6 +7,8 @@ import {
   SortFormComponent
 } from './components';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthYoutubeInterceptor } from './interceptors/auth-youtube.interceptor';
 
 const COMPONENTS = [HeaderComponent, SearchFormComponent, SortFormComponent];
 
@@ -17,11 +19,16 @@ const COMPONENTS = [HeaderComponent, SearchFormComponent, SortFormComponent];
   imports: [
     CommonModule,
     RouterModule,
+    HttpClientModule,
     SharedModule
   ],
   exports: [
     ...COMPONENTS
   ],
-    providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthYoutubeInterceptor,
+    multi: true
+  }],
 })
 export class CoreModule {}

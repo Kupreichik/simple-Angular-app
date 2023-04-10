@@ -8,4 +8,16 @@ import { Statistics } from '../../models/search-item.model';
 })
 export class ItemStatisticsComponent {
   @Input() statistics!: Statistics;
+
+  get viewCount(): string {
+    return this.statistics?.viewCount;
+  }
+
+  get likeCount(): string {
+    return this.statistics?.likeCount;
+  }
+
+  get commentCount(): string {
+    return this.statistics?.commentCount;
+  }
 }

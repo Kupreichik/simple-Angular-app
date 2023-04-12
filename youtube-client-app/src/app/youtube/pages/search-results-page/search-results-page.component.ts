@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/youtube/services/search/search.service';
 import { SortService } from 'src/app/core/services/sort/sort.service';
-import { SearchItem } from 'src/app/youtube/models/search-item.model';
 import { Subscription } from 'rxjs';
+import { SearchItem } from 'src/app/redux/state.models';
 
 @Component({
   selector: 'app-search-results-page',

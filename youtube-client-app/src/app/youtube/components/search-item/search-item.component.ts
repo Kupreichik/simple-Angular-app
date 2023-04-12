@@ -1,6 +1,6 @@
 import { Input, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchItem } from 'src/app/youtube/models/search-item.model';
+import { SearchItem } from 'src/app/redux/state.models';
 
 @Component({
   selector: 'app-search-item',

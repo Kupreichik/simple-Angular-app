@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SearchItem } from 'src/app/youtube/models/search-item.model';
 import { SearchResultsCount } from 'src/app/youtube/constants/response.constant';
 import { SearchResults } from 'src/app/youtube/models/search-results.model';
+import { SearchItem } from 'src/app/redux/state.models';
 
 @Injectable({
   providedIn: 'root',

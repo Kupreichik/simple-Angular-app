@@ -1,4 +1,5 @@
-import { SearchItem } from './search-item.model';
+import { SearchItem } from "src/app/redux/state.models";
+
 
 export interface SearchResults {
   kind: string;

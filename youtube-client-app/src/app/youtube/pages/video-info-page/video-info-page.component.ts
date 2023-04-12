@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SearchItem, Statistics } from '../../models/search-item.model';
 import { Subscription } from 'rxjs';
 import { SearchService } from '../../services/search/search.service';
+import { SearchItem, Statistics } from 'src/app/redux/state.models';
 
 @Component({
   selector: 'app-video-info-page',

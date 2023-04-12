@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchItem } from '../models/search-item.model';
+import { SearchItem } from 'src/app/redux/state.models';
 
 @Pipe({
   name: 'sortByText',

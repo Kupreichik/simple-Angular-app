@@ -1,5 +1,5 @@
 import { Input, Component } from '@angular/core';
-import { Statistics } from '../../models/search-item.model';
+import { Statistics } from 'src/app/redux/state.models';
 
 @Component({
   selector: 'app-item-statistics',

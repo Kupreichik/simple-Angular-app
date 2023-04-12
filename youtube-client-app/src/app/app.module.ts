@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './redux/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { SearchItemsEffects } from './redux/effects/search-items.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,7 @@ import { EffectsModule } from '@ngrx/effects';
       metaReducers,
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([SearchItemsEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

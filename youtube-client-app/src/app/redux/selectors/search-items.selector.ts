@@ -1,4 +1,4 @@
 import { createFeatureSelector } from '@ngrx/store';
-import { SearchItem, State } from '../state.models';
+import { SearchItem } from '../state.models';
 
-export const searchItemsFeatureSelector = createFeatureSelector<SearchItem[]>('searchItems');
+export const searchItemsFeatureSelector = createFeatureSelector<SearchItem<string>[]>('searchItems');

@@ -3,6 +3,6 @@ import { SearchItem } from "../state.models";
 
 export const createCustomItem = createAction(
   '[customItems] createCustomItem', 
-  props<SearchItem>()
+  props<SearchItem<string>>()
   );
   

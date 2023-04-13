@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { nanoid } from 'nanoid';
 import { urlPattern } from '../../constants/regexp-patterns.constant';
 import { ValidateService } from '../../../core/services/validate/validate.service';
+import { idLength } from '../../constants/response.constant';
+import { SearchItem } from 'src/app/redux/state.models';
+import { Store } from '@ngrx/store';
+import { createCustomItem } from 'src/app/redux/actions/custom-items.actions';
 
 @Component({
   selector: 'app-admin-page',
@@ -10,8 +15,13 @@ import { ValidateService } from '../../../core/services/validate/validate.servic
 })
 export class AdminPageComponent implements OnInit {
   cardCreateForm!: FormGroup;
+  isPopupVisible = false;
 
-  constructor(private formBuilder: FormBuilder, private validateService: ValidateService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private validateService: ValidateService,
+    private store: Store
+    ) {}
 
   ngOnInit(): void {
     this.cardCreateForm = this.formBuilder.group({
@@ -21,26 +31,74 @@ export class AdminPageComponent implements OnInit {
       cardLink: ['', [Validators.required, Validators.pattern(urlPattern)]],
       cardDate: ['', [Validators.required, this.validateService.dateValidator]],
     });
+    console.log(this.cardCreateForm.controls)
+  }
+
+  submitCard() {
+    const { cardTitle, cardDescription, cardImg, cardLink, cardDate } = this.cardCreateForm.value;
+    const id = nanoid(idLength);
+
+    const card: SearchItem<string> = {
+      videoLink: cardLink,
+      id,
+      snippet: {
+        publishedAt: cardDate,
+        title: cardTitle,
+        description: cardDescription,
+        thumbnails: {
+          medium: { url: cardImg },
+          standard: { url: cardImg },
+        },
+      },
+      statistics: {
+        viewCount: '1',
+        likeCount: '0',
+        commentCount: '0',
+      },
+    };
+
+    this.store.dispatch(createCustomItem(card));
+    this.resetForm();
+    this.showPopup();
+  }
+
+  private resetForm() {
+    const formFieldsLinks: AbstractControl[] = [
+      this.cardTitle,
+      this.cardDescription,
+      this.cardImg,
+      this.cardLink,
+      this.cardDate,
+    ];
+    formFieldsLinks.forEach((item) => {
+      item.reset()
+    })
+  }
+
+  showPopup() {
+    const delay = 2000;
+    this.isPopupVisible = true;
+    setTimeout(() => this.isPopupVisible = false, delay)
   }
 
   get cardTitle() {
-    return this.cardCreateForm.get('cardTitle');
+    return this.cardCreateForm.get('cardTitle') as AbstractControl;
   }
 
   get cardDescription() {
-    return this.cardCreateForm.get('cardDescription');
+    return this.cardCreateForm.get('cardDescription') as AbstractControl;
   }
 
   get cardImg() {
-    return this.cardCreateForm.get('cardImg');
+    return this.cardCreateForm.get('cardImg') as AbstractControl;
   }
 
   get cardLink() {
-    return this.cardCreateForm.get('cardLink');
+    return this.cardCreateForm.get('cardLink') as AbstractControl;
   }
 
   get cardDate() {
-    return this.cardCreateForm.get('cardDate');
+    return this.cardCreateForm.get('cardDate') as AbstractControl;
   }
 
   cardTitleError(error: string): ValidationErrors | null | undefined {

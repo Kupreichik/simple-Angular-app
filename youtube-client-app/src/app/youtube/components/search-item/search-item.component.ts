@@ -8,7 +8,7 @@ import { SearchItem } from 'src/app/redux/state.models';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent implements OnInit {
-  @Input() itemData!: SearchItem;
+  @Input() itemData!: SearchItem<string>;
   fullTitle!: string;
 
   constructor(private router: Router) {}

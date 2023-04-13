@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { SearchService } from 'src/app/youtube/services/search/search.service';
 import { SortService } from 'src/app/core/services/sort/sort.service';
-import { Observable, Subscription, map } from 'rxjs';
-import { SearchItem } from 'src/app/redux/state.models';
+import { Observable, map } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { allItemsSelector } from 'src/app/redux/selectors/all-items.selector';
 

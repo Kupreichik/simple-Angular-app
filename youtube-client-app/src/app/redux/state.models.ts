@@ -1,15 +1,13 @@
 export interface State {
-  searchItems: SearchItem[];
-  customItems: SearchItem[];
+  searchItems: SearchItem<string>[];
+  customItems: SearchItem<string>[];
 }
 
-export interface SearchItem {
+export interface SearchItem<T> {
   kind?: string;
   etag?: string;
-  id: {
-    kind?: string;
-    videoId: string;
-  };
+  videoLink?: string;
+  id: T;
   snippet: {
     publishedAt: string;
     channelId?: string;

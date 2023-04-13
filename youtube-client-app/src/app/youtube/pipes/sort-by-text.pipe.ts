@@ -5,7 +5,7 @@ import { SearchItem } from 'src/app/redux/state.models';
   name: 'sortByText',
 })
 export class SortByTextPipe implements PipeTransform {
-  transform(searchItems: SearchItem[], sortText: string): SearchItem[] {
+  transform(searchItems: SearchItem<string>[], sortText: string): SearchItem<string>[] {
     if (sortText) {
       return searchItems.filter((e) =>
         e.snippet.title.toLocaleLowerCase().includes(sortText.toLocaleLowerCase()),

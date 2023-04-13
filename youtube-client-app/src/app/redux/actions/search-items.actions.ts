@@ -13,5 +13,5 @@ export const uploadSearchItemsId = createAction(
 
 export const uploadSearchItems = createAction(
   '[searchItems] upload search items',
-  props<{ searchItems: SearchItem[] }>(),
+  props<{ searchItems: SearchItem<string>[] }>(),
 );

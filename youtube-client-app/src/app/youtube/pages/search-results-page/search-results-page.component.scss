@@ -11,8 +11,9 @@ main {
 }
 
 .nothing-found-block {
-  margin-top: 20vh;
+  margin: 20vh 3vw;
   text-align: center;
   font-size: 24px;
   color: #828282;
+  word-wrap: break-word;
 }

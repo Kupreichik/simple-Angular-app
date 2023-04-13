@@ -5,7 +5,8 @@ import { SearchItem } from 'src/app/redux/state.models';
   name: 'sortItems',
 })
 export class SortItemsPipe implements PipeTransform {
-  transform(searchItems: SearchItem[], sortingField: string, isDesc: boolean): SearchItem[] {
+  transform(searchItems: SearchItem[] | null, sortingField: string, isDesc: boolean): SearchItem[] {
+    if(!searchItems) return []
     const direction = isDesc ? 1 : -1;
     if (sortingField === 'date') {
       return searchItems.sort(

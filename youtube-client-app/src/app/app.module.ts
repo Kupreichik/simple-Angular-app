@@ -7,7 +7,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './redux/reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { SearchItemsEffects } from './redux/effects/search-items.effects';
 
@@ -21,7 +20,6 @@ import { SearchItemsEffects } from './redux/effects/search-items.effects';
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25 }),
     EffectsModule.forRoot([SearchItemsEffects]),
   ],
   providers: [],

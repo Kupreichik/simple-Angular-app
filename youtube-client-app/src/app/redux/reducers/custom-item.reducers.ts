@@ -1,9 +1,11 @@
 import { createReducer, on } from "@ngrx/store";
-import { initialState } from "./index";
 import { createCustomItem } from "../actions/custom-items.actions";
+import { SearchItem } from "../state.models";
+
+const initialState: SearchItem[] = [];
 
 export const customItemReducer = createReducer(
-  initialState.customItems,
+  initialState,
   on(createCustomItem, (state, customItem) => ([
     ...state,
     customItem,

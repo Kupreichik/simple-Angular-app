@@ -1,10 +1,12 @@
 import { createReducer, on } from "@ngrx/store";
-import { initialState } from ".";
 import { uploadSearchItems } from "../actions/search-items.actions";
+import { SearchItem } from '../state.models';
+
+const initialState: SearchItem[] = [];
 
 export const searchItemsReducer = createReducer(
-  initialState.searchItems,
+  initialState,
   on(uploadSearchItems, (state, { searchItems }) => (
-    {...state, searchItems}
+    [...searchItems]
   ))
 )

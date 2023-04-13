@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, catchError, map } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { SearchResultsCount } from 'src/app/youtube/constants/response.constant';
 import { SearchResults } from 'src/app/youtube/models/search-results.model';
@@ -9,7 +9,6 @@ import { SearchItem } from 'src/app/redux/state.models';
   providedIn: 'root',
 })
 export class SearchService {
-  searchItems$ = new BehaviorSubject<SearchItem[]>([]);
   errorMessage = '';
 
   constructor(private http: HttpClient) {}
@@ -25,6 +24,10 @@ export class SearchService {
       map((response) => {
         return response.items.map((item) => item.id.videoId).join(',');
       }),
+      catchError((err) => {
+        this.errorMessage = err.message;
+        return EMPTY;
+      })
     );
   }
 

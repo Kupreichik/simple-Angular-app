@@ -1,32 +1,27 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchService } from 'src/app/youtube/services/search/search.service';
 import { SortService } from 'src/app/core/services/sort/sort.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 import { SearchItem } from 'src/app/redux/state.models';
+import { Store } from '@ngrx/store';
+import { allItemsSelector } from 'src/app/redux/selectors/all-items.selector';
 
 @Component({
   selector: 'app-search-results-page',
   templateUrl: './search-results-page.component.html',
   styleUrls: ['./search-results-page.component.scss'],
 })
-export class SearchResultsPageComponent implements OnInit, OnDestroy {
-  searchItems!: SearchItem[];
-  itemsSubscription!: Subscription;
+export class SearchResultsPageComponent {
+  searchItems$ = this.store.select(allItemsSelector);
 
-  constructor(public searchService: SearchService, public sortService: SortService) {}
+  constructor(
+    private store: Store,
+    public sortService: SortService,
+    private searchService: SearchService,
+  ) {}
 
-  ngOnInit(): void {
-    this.itemsSubscription = this.searchService.searchItems$.subscribe(
-      (searchItems) => (this.searchItems = searchItems),
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.itemsSubscription.unsubscribe;
-  }
-
-  hasSearchItems(): boolean {
-    return this.searchItems?.length > 0;
+  hasSearchItems(): Observable<boolean> {
+    return this.searchItems$.pipe(map((items) => !!items.length));
   }
 
   getFetchErrorMessage(): string {

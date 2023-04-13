@@ -1,7 +1,9 @@
 <ng-container *ngIf="searchItem">
   <button mat-button [appPublicationDateColor]="publishedDate" class="back-btn" (click)="goToPreviousPage()">&lt;</button>
   <div class="card-img-container">
-    <img class="card-page-img" [src]="previewSrc">
+    <a [href]="setVideoHref()" target="_blank">
+      <img class="card-page-img" [src]="previewSrc" [alt]="title">
+    </a>
   </div>
   <div class="description-container">
     <div class="card-page-title">

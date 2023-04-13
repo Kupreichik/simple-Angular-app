@@ -5,6 +5,7 @@ import { SearchService } from '../../services/search/search.service';
 import { SearchItem, Statistics } from 'src/app/redux/state.models';
 import { Store } from '@ngrx/store';
 import { allItemsSelector } from 'src/app/redux/selectors/all-items.selector';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-video-info-page',
@@ -75,5 +76,9 @@ export class VideoInfoPageComponent implements OnDestroy {
 
   goToPreviousPage(): void {
     history.back();
+  }
+
+  setVideoHref(): string {
+    return this.searchItem.videoLink || environment.BASE_YOUTUBE_VIDEO_URL + this.id
   }
 }

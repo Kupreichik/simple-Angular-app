@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { requestSearchItems, uploadSearchItems, uploadSearchItemsId } from "../actions/search-items.actions";
-import { debounceTime, distinctUntilChanged, map, switchMap } from "rxjs";
-import { debounceDelay } from "src/app/core/constants/constants";
+import { distinctUntilChanged, map, switchMap } from "rxjs";
 import { SearchService } from "src/app/youtube/services/search/search.service";
 
 @Injectable()
@@ -20,7 +19,6 @@ export class SearchItemsEffects {
   uploadSearchItems$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(requestSearchItems),
-      debounceTime(debounceDelay),
       distinctUntilChanged(
         (previous, current) => previous.searchingString === current.searchingString,
       ),

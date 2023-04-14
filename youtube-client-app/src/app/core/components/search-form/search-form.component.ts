@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SearchService } from '../../../youtube/services/search/search.service';
 import { FormControl } from '@angular/forms';
 import { Subscription, debounceTime, filter } from 'rxjs';
 import { debounceDelay, debounceMinSearchLength } from '../../constants/constants';

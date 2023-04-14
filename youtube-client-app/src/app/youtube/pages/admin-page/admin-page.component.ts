@@ -31,7 +31,6 @@ export class AdminPageComponent implements OnInit {
       cardLink: ['', [Validators.required, Validators.pattern(urlPattern)]],
       cardDate: ['', [Validators.required, this.validateService.dateValidator]],
     });
-    console.log(this.cardCreateForm.controls)
   }
 
   submitCard() {
@@ -76,7 +75,7 @@ export class AdminPageComponent implements OnInit {
   }
 
   showPopup() {
-    const delay = 2000;
+    const delay = 1000;
     this.isPopupVisible = true;
     setTimeout(() => this.isPopupVisible = false, delay)
   }

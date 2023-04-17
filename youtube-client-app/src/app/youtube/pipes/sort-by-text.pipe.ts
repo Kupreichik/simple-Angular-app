@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchItem } from '../models/search-item.model';
+import { SearchItem } from 'src/app/redux/state.models';
 
 @Pipe({
   name: 'sortByText',
 })
 export class SortByTextPipe implements PipeTransform {
-  transform(searchItems: SearchItem[], sortText: string): SearchItem[] {
+  transform(searchItems: SearchItem<string>[], sortText: string): SearchItem<string>[] {
     if (sortText) {
       return searchItems.filter((e) =>
         e.snippet.title.toLocaleLowerCase().includes(sortText.toLocaleLowerCase()),

@@ -8,7 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-const { BASE_YOUTUBE_URL, YOUTUBE_API_KEY } = environment;
+const { BASE_YOUTUBE_API_URL, YOUTUBE_API_KEY } = environment;
 
 @Injectable()
 export class AuthYoutubeInterceptor implements HttpInterceptor {
@@ -16,7 +16,7 @@ export class AuthYoutubeInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(
       request.clone({
-        url: `${BASE_YOUTUBE_URL}${request.url}`,
+        url: `${BASE_YOUTUBE_API_URL}${request.url}`,
         setParams: {
           key: YOUTUBE_API_KEY,
         },

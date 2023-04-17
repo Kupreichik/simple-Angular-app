@@ -1,8 +1,11 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SearchItem, Statistics } from '../../models/search-item.model';
-import { Subscription } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { SearchService } from '../../services/search/search.service';
+import { SearchItem, Statistics } from 'src/app/redux/state.models';
+import { Store } from '@ngrx/store';
+import { allItemsSelector } from 'src/app/redux/selectors/all-items.selector';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-video-info-page',
@@ -11,30 +14,44 @@ import { SearchService } from '../../services/search/search.service';
 })
 export class VideoInfoPageComponent implements OnDestroy {
   id!: string;
-  searchItem!: SearchItem;
+  searchItem!: SearchItem<string>;
   urlParamSubscription!: Subscription;
+  storeSubscription!: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private searchService: SearchService,
+    private store: Store,
   ) {
     this.urlParamSubscription = this.route.params.subscribe((params) => {
       this.id = params['id'];
-    });
-
-    this.searchService.fetchSearchItems(this.id).subscribe((items) => {
-      const data = items[0];
-      if (!data) {
-        this.router.navigateByUrl('page-not-found');
-      } else {
-        this.searchItem = data;
-      }
+      this.storeSubscription = this.store
+        .select(allItemsSelector)
+        .pipe(
+          map((items: SearchItem<string>[]) => {
+            const item = items.find((item) => item.id === this.id);
+            if (!item) {
+              this.searchService.fetchSearchItems(this.id).subscribe((items) => {
+                const data = items[0];
+                if (!data) {
+                  this.router.navigateByUrl('page-not-found');
+                } else {
+                  this.searchItem = data;
+                }
+              });
+            } else {
+              this.searchItem = item;
+            }
+          }),
+        )
+        .subscribe();
     });
   }
 
   ngOnDestroy(): void {
     this.urlParamSubscription.unsubscribe();
+    this.storeSubscription.unsubscribe();
   }
 
   get publishedDate(): string {
@@ -59,5 +76,9 @@ export class VideoInfoPageComponent implements OnDestroy {
 
   goToPreviousPage(): void {
     history.back();
+  }
+
+  setVideoHref(): string {
+    return this.searchItem.videoLink || environment.BASE_YOUTUBE_VIDEO_URL + this.id
   }
 }

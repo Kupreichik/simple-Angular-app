@@ -10,11 +10,11 @@ const routes: Routes = [
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
     canActivate: [AuthGuard],
   },
-  { path: '**', component: NotFoundPageComponent},
+  { path: '**', component: NotFoundPageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

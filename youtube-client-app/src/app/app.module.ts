@@ -5,16 +5,22 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CoreModule } from './core/core.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './redux/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { SearchItemsEffects } from './redux/effects/search-items.effects';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
     CoreModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+    }),
+    EffectsModule.forRoot([SearchItemsEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

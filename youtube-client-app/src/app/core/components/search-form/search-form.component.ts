@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SearchService } from '../../../youtube/services/search/search.service';
 import { FormControl } from '@angular/forms';
 import { Subscription, debounceTime, filter } from 'rxjs';
 import { debounceDelay, debounceMinSearchLength } from '../../constants/constants';
+import { Store } from '@ngrx/store';
+import { requestSearchItems } from 'src/app/redux/actions/search-items.actions';
 
 @Component({
   selector: 'app-search-form',
@@ -13,7 +14,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   searchInput = new FormControl();
   inputSubscription!: Subscription;
 
-  constructor(private searchService: SearchService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.inputSubscription = this.searchInput.valueChanges
@@ -21,7 +22,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
         filter((value) => value.length >= debounceMinSearchLength),
         debounceTime(debounceDelay),
       )
-      .subscribe((value) => this.searchService.updateSearchItems(value));
+      .subscribe((value) => this.store.dispatch(requestSearchItems({ searchingString: value })));
   }
 
   ngOnDestroy(): void {

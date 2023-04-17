@@ -1,6 +1,6 @@
 import { Input, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchItem } from 'src/app/youtube/models/search-item.model';
+import { SearchItem } from 'src/app/redux/state.models';
 
 @Component({
   selector: 'app-search-item',
@@ -8,7 +8,7 @@ import { SearchItem } from 'src/app/youtube/models/search-item.model';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent implements OnInit {
-  @Input() itemData!: SearchItem;
+  @Input() itemData!: SearchItem<string>;
   fullTitle!: string;
 
   constructor(private router: Router) {}

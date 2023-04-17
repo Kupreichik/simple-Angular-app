@@ -1,5 +1,5 @@
-<main *ngIf="hasSearchItems() else nothingFound">
-  <app-search-item *ngFor="let item of (searchItems | sortItems: sortService.sortField: sortService.isDesc | sortByText: sortService.sortText)" [itemData]="item"></app-search-item>
+<main *ngIf="hasSearchItems() | async else nothingFound">
+  <app-search-item *ngFor="let item of (searchItems$ | async | sortItems: sortService.sortField: sortService.isDesc | sortByText: sortService.sortText)" [itemData]="item"></app-search-item>
 </main>
 
 <ng-template #nothingFound>
